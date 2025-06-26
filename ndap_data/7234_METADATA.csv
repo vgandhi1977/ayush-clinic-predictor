@@ -1,0 +1,10 @@
+VariableName,VariableCode,Type_Of_Variable,Unit_Of_Measure,Scaling_Factor,Aggregation_Type,Weighing_Varible_ID,Weighing_Variable_Name,Long_Description
+Country,Country,Key Identifier,,0,,,,Country
+State lgd code,StateCode,Key Identifier,,0,,,,State LGD Code
+State,StateName,Key Identifier,,0,,,,State
+YearCode,YearCode,Key Identifier,"",0,"","","",YearCode
+Year,Year,Key Identifier,"",0,"","","",Year
+Ayurveda pharmacies,I7234_3,Numeric Variable,Number,1,sum,WeighingRatio_TotalPopulation,Total Population from Census,"Ayurveda Pharmacies in each state Ayurveda drugs includes all medicines intended for internal or external use for or in the diagnosis, treatment, mitigation or prevention of disease or disorder in human beings or animals"
+Unani pharmacies,I7234_4,Numeric Variable,Number,1,sum,WeighingRatio_TotalPopulation,Total Population from Census,"Unani Pharmacies in each state Unani drugs includes all medicines intended for internal or external use for or in the diagnosis, treatment, mitigation or prevention of disease or disorder in human beings or animals"
+Siddha pharmacies,I7234_5,Numeric Variable,Number,1,sum,WeighingRatio_TotalPopulation,Total Population from Census,"Siddha Pharmacies in each state Siddha drugs includes all medicines intended for internal or external use for or in the diagnosis, treatment, mitigation or prevention of disease or disorder in human beings or animals"
+Homoeopathy pharmacies,I7234_6,Numeric Variable,Number,1,sum,WeighingRatio_TotalPopulation,Total Population from Census,Homoeopathy Pharmacies in each state

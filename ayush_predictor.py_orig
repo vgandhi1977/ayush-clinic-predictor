@@ -1,0 +1,142 @@
+import plotly.express as px
+import streamlit as st
+import pandas as pd
+import joblib
+import requests
+import json
+
+with open("ndap_data/india_states.geojson", "r") as f:
+    geojson_data = json.load(f)
+
+st.write("Loaded GeoJSON keys:", geojson_data.keys())
+st.write("🔍 Sample GeoJSON property keys:")
+st.json(geojson_data["features"][0]["properties"])
+
+st.header("🗺️ AYUSH Clinics Across Indian States")
+
+# Load cleaned data
+map_df = pd.read_csv("ndap_data/AYUSH_Merged_Cleaned.csv")
+st.subheader("📋 States in AYUSH Data")
+ayush_states = sorted(map_df["StateName"].unique())
+st.write(ayush_states)
+
+
+# Show mismatched states
+st.subheader("🗺️ States in GeoJSON")
+valid_states = {feature["properties"]["NAME_1"] for feature in geojson_data["features"]}
+st.write(valid_states)
+
+
+map_df["StateName_clean"] = map_df["StateName"].str.lower().str.strip()
+mismatched = set(map_df["StateName_clean"]) - valid_states
+if mismatched:
+    st.warning(f"⚠️ Mismatched state names (not in GeoJSON): {sorted(mismatched)}")
+else:
+    st.success("✅ All state names match GeoJSON successfully!")
+
+
+excluded_states = ["ladakh", "telangana"]
+
+# Normalize and map state names
+state_name_mapping = {
+    "andaman and nicobar islands": "Andaman and Nicobar",
+    "jammu and kashmir": "Jammu and Kashmir",
+    "uttarakhand": "Uttaranchal",
+    "odisha": "Orissa",
+    "the dadra and nagar haveli and daman and diu": "Daman and Diu",
+    "delhi": "Delhi",
+    "andhra pradesh": "Andhra Pradesh",
+    "arunachal pradesh": "Arunachal Pradesh",
+    "assam": "Assam",
+    "bihar": "Bihar",
+    "chandigarh": "Chandigarh",
+    "chhattisgarh": "Chhattisgarh",
+    "goa": "Goa",
+    "gujarat": "Gujarat",
+    "haryana": "Haryana",
+    "himachal pradesh": "Himachal Pradesh",
+    "jharkhand": "Jharkhand",
+    "karnataka": "Karnataka",
+    "kerala": "Kerala",
+    "lakshadweep": "Lakshadweep",
+    "madhya pradesh": "Madhya Pradesh",
+    "maharashtra": "Maharashtra",
+    "manipur": "Manipur",
+    "meghalaya": "Meghalaya",
+    "mizoram": "Mizoram",
+    "nagaland": "Nagaland",
+    "puducherry": "Puducherry",
+    "punjab": "Punjab",
+    "rajasthan": "Rajasthan",
+    "sikkim": "Sikkim",
+    "tamil nadu": "Tamil Nadu",
+    "tripura": "Tripura",
+    "uttar pradesh": "Uttar Pradesh",
+    "west bengal": "West Bengal"
+}
+
+
+map_df["StateName"] = map_df["StateName"].str.lower().str.strip()
+map_df = map_df[~map_df["StateName"].isin(excluded_states)]
+map_df["StateName"] = map_df["StateName"].replace(state_name_mapping)
+map_df["StateName"] = map_df["StateName"].str.title()  # Capitalize to match GeoJSON
+
+valid_states = {f["properties"]["NAME_1"] for f in geojson_data["features"]}
+mismatched = set(map_df["StateName"]) - valid_states
+if mismatched:
+    st.warning(f"🚫 Still mismatched: {sorted(mismatched)}")
+else:
+    st.success("✅ All states match GeoJSON successfully!")
+
+
+# Plot
+fig = px.choropleth(
+    map_df,
+    geojson=geojson_data,
+    featureidkey="properties.NAME_1",
+    locations="StateName",
+    color="Total_AYUSH",
+    color_continuous_scale="YlGnBu",
+    title="State-wise AYUSH Clinic Count",
+)
+fig.update_geos(fitbounds="locations", visible=False)
+st.plotly_chart(fig, use_container_width=True)
+
+
+
+# Load trained model
+model = joblib.load("ayush_model.pkl")
+
+# Set page title
+st.title("🧪 AYUSH Clinic Predictor")
+
+# Upload CSV
+uploaded_file = st.file_uploader("📁 Upload your input CSV file", type=["csv"])
+
+if uploaded_file:
+    try:
+        df = pd.read_csv(uploaded_file)
+
+        # Show preview
+        st.subheader("🔍 Preview of Uploaded Data")
+        st.write(df.head())
+
+        # Required features
+        features = ['TotalPopulation', 'TotalPopulationUrban', 'TotalPopulationRural',
+                    'LandArea', 'LandAreaUrban', 'LandAreaRural', 'NumberOfHouseholds']
+
+        if all(f in df.columns for f in features):
+            X = df[features]
+            predictions = model.predict(X)
+            df['Predicted_AYUSH_Clinics'] = predictions
+
+            st.subheader("📊 Predicted AYUSH Clinics")
+            st.write(df[['StateName', 'Predicted_AYUSH_Clinics']])
+        else:
+            st.error("🚫 Missing required columns in uploaded CSV.")
+
+    except Exception as e:
+        st.error(f"❌ Error reading file: {e}")
+else:
+    st.info("👆 Please upload a CSV to begin.")
+

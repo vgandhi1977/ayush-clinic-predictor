@@ -1,0 +1,37 @@
+Country,State lgd code,State,YearCode,Year,Ayurveda pharmacies (UOM:Number) |Scaling Factor:1,Unani pharmacies (UOM:Number) |Scaling Factor:1,Siddha pharmacies (UOM:Number) |Scaling Factor:1,Homoeopathy pharmacies (UOM:Number) |Scaling Factor:1
+India,35,Andaman And Nicobar Islands,2020,"Calendar Year (Jan - Dec), 2020",0,0,0,0
+India,28,Andhra Pradesh,2020,"Calendar Year (Jan - Dec), 2020",298,16,0,12
+India,12,Arunachal Pradesh,2020,"Calendar Year (Jan - Dec), 2020",2,0,0,0
+India,18,Assam,2020,"Calendar Year (Jan - Dec), 2020",42,0,0,2
+India,10,Bihar,2020,"Calendar Year (Jan - Dec), 2020",216,22,0,48
+India,4,Chandigarh,2020,"Calendar Year (Jan - Dec), 2020",2,0,0,0
+India,22,Chhattisgarh,2020,"Calendar Year (Jan - Dec), 2020",30,0,0,0
+India,7,Delhi,2020,"Calendar Year (Jan - Dec), 2020",93,32,0,0
+India,30,Goa,2020,"Calendar Year (Jan - Dec), 2020",11,0,0,0
+India,24,Gujarat,2020,"Calendar Year (Jan - Dec), 2020",797,0,0,0
+India,6,Haryana,2020,"Calendar Year (Jan - Dec), 2020",447,0,0,0
+India,2,Himachal Pradesh,2020,"Calendar Year (Jan - Dec), 2020",154,0,0,7
+India,1,Jammu And Kashmir,2020,"Calendar Year (Jan - Dec), 2020",15.65002976078453638560,3.91250744019613409640,0.00000000000000000000,1.95625372009806704820
+India,20,Jharkhand,2020,"Calendar Year (Jan - Dec), 2020",29,0,0,5
+India,29,Karnataka,2020,"Calendar Year (Jan - Dec), 2020",226,0,0,0
+India,32,Kerala,2020,"Calendar Year (Jan - Dec), 2020",746,4,3,0
+India,37,Ladakh,2020,"Calendar Year (Jan - Dec), 2020",0.34997023921546361440,0.08749255980386590360,0.00000000000000000000,0.04374627990193295180
+India,31,Lakshadweep,2020,"Calendar Year (Jan - Dec), 2020",0,0,0,0
+India,23,Madhya Pradesh,2020,"Calendar Year (Jan - Dec), 2020",679,3,0,17
+India,27,Maharashtra,2020,"Calendar Year (Jan - Dec), 2020",782,13,0,39
+India,14,Manipur,2020,"Calendar Year (Jan - Dec), 2020",0,0,0,0
+India,17,Meghalaya,2020,"Calendar Year (Jan - Dec), 2020",0,0,0,0
+India,15,Mizoram,2020,"Calendar Year (Jan - Dec), 2020",0,0,0,0
+India,13,Nagaland,2020,"Calendar Year (Jan - Dec), 2020",0,0,0,0
+India,21,Odisha,2020,"Calendar Year (Jan - Dec), 2020",91,0,0,0
+India,34,Puducherry,2020,"Calendar Year (Jan - Dec), 2020",41,0,9,5
+India,3,Punjab,2020,"Calendar Year (Jan - Dec), 2020",352,0,0,0
+India,8,Rajasthan,2020,"Calendar Year (Jan - Dec), 2020",315,2,0,0
+India,11,Sikkim,2020,"Calendar Year (Jan - Dec), 2020",2,0,0,0
+India,33,Tamil Nadu,2020,"Calendar Year (Jan - Dec), 2020",140,8,165,0
+India,36,Telangana,2020,"Calendar Year (Jan - Dec), 2020",640,462,0,60
+India,38,The Dadra And Nagar Haveli And Daman And Diu,2020,"Calendar Year (Jan - Dec), 2020",14.00000000000000000000,0.00000000000000000000,0.00000000000000000000,0.00000000000000000000
+India,16,Tripura,2020,"Calendar Year (Jan - Dec), 2020",0,0,0,1
+India,9,Uttar Pradesh,2020,"Calendar Year (Jan - Dec), 2020",1509,290,0,36
+India,5,Uttarakhand,2020,"Calendar Year (Jan - Dec), 2020",352,0,0,0
+India,19,West Bengal,2020,"Calendar Year (Jan - Dec), 2020",213,5,0,0
